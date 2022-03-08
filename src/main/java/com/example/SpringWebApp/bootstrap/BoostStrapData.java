@@ -25,27 +25,40 @@ public class BoostStrapData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        Publisher publisher = new Publisher();
+        publisher.setAddressLine1("SFG Publishing");
+        publisher.setCity("St Petersburg");
+        publisher.setState("FL");
+
+        publisherRepository.save(publisher);
+
+        System.out.println("Publisher count: "+publisherRepository.count());
+
+
         Author eric = new Author("Eric", "Evans");
         Book ddd = new Book("Domain Driven Design", "123123");
         eric.getBooks().add(ddd);
         ddd.getAuthors().add(eric);
 
+        ddd.setPublisher(publisher);
+        publisher.getBooks().add(ddd);
+
         authorRepository.save(eric);
         bookRepository.save(ddd);
+        publisherRepository.save(publisher);
 
         Author rod = new Author("Rod","Jhonson");
         Book noEJB = new Book("J2EE Development without EJB","3939459459");
         rod.getBooks().add(noEJB);
         noEJB.getAuthors().add(rod);
+        noEJB.setPublisher(publisher);
+        publisher.getBooks().add(noEJB);
 
         authorRepository.save(rod);
         bookRepository.save(noEJB);
+        publisherRepository.save(publisher);
 
-        System.out.println("Started in Boostrap");
         System.out.println("Number of books: "+bookRepository.count());
-
-        Publisher pub = new Publisher("C/Campana 167","Cenicero","Spain","20XXX");
-
-        publisherRepository.save(pub);
+        System.out.println("Publisher Number of Books: "+publisher.getBooks().size());
     }
 }
