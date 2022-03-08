@@ -26,7 +26,7 @@ public class BoostStrapData implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         Publisher publisher = new Publisher();
-        publisher.setAddressLine1("SFG Publishing");
+        publisher.setName("SFG Publishing");
         publisher.setCity("St Petersburg");
         publisher.setState("FL");
 
