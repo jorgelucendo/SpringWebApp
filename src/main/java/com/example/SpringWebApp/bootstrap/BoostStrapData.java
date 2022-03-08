@@ -2,8 +2,10 @@ package com.example.SpringWebApp.bootstrap;
 
 import com.example.SpringWebApp.domain.Author;
 import com.example.SpringWebApp.domain.Book;
+import com.example.SpringWebApp.domain.Publisher;
 import com.example.SpringWebApp.repositories.AuthorRepository;
 import com.example.SpringWebApp.repositories.BookRepository;
+import com.example.SpringWebApp.repositories.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,10 +14,12 @@ public class BoostStrapData implements CommandLineRunner {
 
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
+    private final PublisherRepository publisherRepository;
 
-    public BoostStrapData(AuthorRepository authorRepository, BookRepository bookRepository) {
+    public BoostStrapData(AuthorRepository authorRepository, BookRepository bookRepository, PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.publisherRepository = publisherRepository;
     }
 
     @Override
@@ -39,5 +43,9 @@ public class BoostStrapData implements CommandLineRunner {
 
         System.out.println("Started in Boostrap");
         System.out.println("Number of books: "+bookRepository.count());
+
+        Publisher pub = new Publisher("C/Campana 167","Cenicero","Spain","20XXX");
+
+        publisherRepository.save(pub);
     }
 }

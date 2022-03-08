@@ -19,8 +19,7 @@ public class Publisher {
     public Publisher() {
     }
 
-    public Publisher(Long id, String addressLine1, String city, String state, String zip) {
-        this.id = id;
+    public Publisher(String addressLine1, String city, String state, String zip) {
         this.addressLine1 = addressLine1;
         this.city = city;
         this.state = state;
@@ -78,11 +77,6 @@ public class Publisher {
     }
 
     @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
-    }
-
-    @Override
     public String toString() {
         return "Publisher{" +
                 "id=" + id +
@@ -91,5 +85,10 @@ public class Publisher {
                 ", state='" + state + '\'' +
                 ", zip='" + zip + '\'' +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }
