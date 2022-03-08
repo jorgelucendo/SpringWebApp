@@ -1,4 +1,4 @@
-package com.example.SpringWebApp.Domain;
+package com.example.SpringWebApp.domain;
 
 import javax.persistence.*;
 import java.util.Set;
